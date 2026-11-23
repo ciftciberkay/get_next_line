@@ -1,11 +1,17 @@
 *This project has been created as part of the 42 curriculum by beciftci.*
 
+# Get Next Line
+
 ## Description
-The "Get Next Line" project aims to implement a highly useful function that reads a line from a given file descriptor (`fd`). Calling this function repeatedly in a loop allows the user to read a text file one line at a time. The project emphasizes the understanding and proper usage of static variables in C programming to maintain state between function calls.
+
+`get_next_line(int fd)` reads one line from an open file descriptor per call. It keeps unread bytes for the next call, includes the newline when present, and returns `NULL` at end of file or on error. Free each returned line when you finish using it. Read one descriptor at a time with this implementation.
 
 ## Instructions
-To compile the files and test the function, you must include the `-D BUFFER_SIZE=n` flag, where `n` is the buffer size of your choice.
 
-Example compilation command:
-```bash
-cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 get_next_line.c get_next_line_utils.c main.c
+Include [get_next_line.h](./get_next_line.h) in your own `main.c`. Compile the driver with both source files.
+
+```sh
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 main.c get_next_line.c get_next_line_utils.c -o demo
+```
+
+The header defaults to a `BUFFER_SIZE` of 42 bytes. Set a different positive size with the compiler flag above.
